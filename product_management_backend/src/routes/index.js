@@ -1,8 +1,8 @@
 const express = require('express');
 const healthController = require('../controllers/health');
+const productRoutes = require('./products');
 
 const router = express.Router();
-// Health endpoint
 
 /**
  * @swagger
@@ -31,5 +31,8 @@ const router = express.Router();
  *                   example: development
  */
 router.get('/', healthController.check.bind(healthController));
+
+// Mount product management routes under /products
+router.use('/products', productRoutes);
 
 module.exports = router;
