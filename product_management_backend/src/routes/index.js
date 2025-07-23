@@ -1,6 +1,7 @@
 const express = require('express');
 const healthController = require('../controllers/health');
 const productRoutes = require('./products');
+const reviewRoutes = require('./reviews'); // Add reviews routes
 
 const router = express.Router();
 
@@ -32,7 +33,9 @@ const router = express.Router();
  */
 router.get('/', healthController.check.bind(healthController));
 
-// Mount product management routes under /products
-router.use('/products', productRoutes);
+ // Mount product management routes under /products
+ router.use('/products', productRoutes);
+ // Mount review management routes at root
+ router.use('/', reviewRoutes);
 
-module.exports = router;
+ module.exports = router;
